@@ -168,20 +168,29 @@ https://hub.docker.com/r/bkimminich/juice-shop
 
 SSH:
 
-```
+```text
 127.0.0.1:2222
 ```
 
-This custom container is built from the repository Dockerfile and includes intentionally insecure configurations for privilege escalation practice.
+This custom container is built from the repository Dockerfile and includes intentionally insecure configurations for Linux privilege escalation practice.
 
-Files included:
+### Files Included
 
-* entrypoint.sh
-* kernel_challenge.c
-* status_check.c
-* systemctl_mock.sh
+* `entrypoint.sh`
+* `kernel_challenge.c`
+* `status_check.c`
+* `systemctl_mock.sh`
 
 These components simulate common privilege escalation scenarios.
+
+### 🌐 Connection & Credentials
+
+| Target User | Connection Method                                 | Password     | Initial Access                            |
+| ----------- | ------------------------------------------------- | ------------ | ----------------------------------------- |
+| **student** | `ssh student@localhost -p 2222`                   | `student123` | Low-privileged SSH access                 |
+| **student** | `docker exec -it linux-priv-esc-lab su - student` | N/A          | Interactive terminal inside the container |
+
+> **Note:** The SSH service is exposed on host port **2222**. If you're running the lab locally, connect using `localhost` or `127.0.0.1`.
 
 ---
 
